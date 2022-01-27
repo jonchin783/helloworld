@@ -1,5 +1,4 @@
 package com.example.helloworld;
-package com.example.helloworld;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -10,18 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class HelloworldApplication {
 
-  @Value("${NAME:World}")
-  String name;
+   public static void main(String[] args) {
+      SpringApplication.run(HelloworldApplication.class, args);
+   }
 
-  @RestController
-  class HelloworldController {
-    @GetMapping("/")
-    String hello() {
-      return "Hello " + name + "!";
-    }
-  }
+   @Value("${TARGET:World}")
+   String target;
 
-  public static void main(String[] args) {
-    SpringApplication.run(HelloworldApplication.class, args);
-  }
+   @RestController
+   class HelloworldController {
+
+      @GetMapping("/")
+      String hello() {
+         return "Hello " + target + "!";
+      }
+   }
+
 }
